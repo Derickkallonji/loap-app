@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Application Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+      rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="form-container">
+        <h1>NOGCANTSI Trading</h1>
+        <p class="note">The name, email, and photo associated with your Google Switch account will be recorded when you upload files and submit this form</p>
+        <p class="required-note">* Indicates required question</p>
+
+        <form id="loanApplicationForm" action="/submit" method="POST" enctype="multipart/form-data" onsubmit="return handleSubmit(event)">
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required placeholder="Your answer">
+                <input type="checkbox" id="responseEmail" name="responseEmail">
+                <label for="responseEmail">Record dagharsandentprises@gmail.com as the email to be included with my response</label>
+            </div>
+
+            <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" required placeholder="Your answer">
+            </div>
+
+            <div class="form-group">
+                <label for="idPassport">ID/Passport Number *</label>
+                <input type="text" id="idPassport" name="idPassport" required placeholder="Your answer">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="Your answer">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Residential Address *</label>
+                <input type="text" id="address" name="address" required placeholder="Your answer">
+            </div>
+
+            <div class="form-group">
+                <label for="employer">Employer Name *</label>
+                <input type="text" id="employer" name="employer" required placeholder="Your answer">
+            </div>
+
+            <div class="form-group">
+                <label for="workAddress">Work Address *</label>
+                <input type="text" id="workAddress" name="workAddress" required placeholder="Your answer">
+            </div>
+
+            <div class="form-group">
+                <label for="referral">Who referred you to Fembi? *</label>
+                <input type="text" id="referral" name="referral" required placeholder="Your answer">
+            </div>
+
+            <div class="form-group">
+                <label for="loanAmount">Loan Amount Requested (R) *</label>
+                <input type="number" id="loanAmount" name="loanAmount" required placeholder="Your answer">
+            </div>
+
+            <div class="form-group">
+                <label for="totalRepayment">Total Repayment Amount (R) *</label>
+                <input type="number" id="totalRepayment" name="totalRepayment" required placeholder="Your answer">
+                <p class="note">30% interest rate included</p>
+            </div>
+
+            <h3>Payment Schedule</h3>
+            <div class="form-group">
+                <label for="payment1Date">1st Payment Date</label>
+                <input type="date" id="payment1Date" name="payment1Date" required>
+            </div>
+            <div class="form-group">
+                <label for="payment1Amount">1st Payment Amount (R)</label>
+                <input type="number" id="payment1Amount" name="payment1Amount" required placeholder="Your answer">
+            </div>
+            <div class="form-group">
+                <label for="payment2Date">2nd Payment Date</label>
+                <input type="date" id="payment2Date" name="payment2Date" required>
+            </div>
+            <div class="form-group">
+                <label for="payment2Amount">2nd Payment Amount (R)</label>
+                <input type="number" id="payment2Amount" name="payment2Amount" required placeholder="Your answer">
+            </div>
+            <div class="form-group">
+                <label for="payment3Date">3rd Payment Date</label>
+                <input type="date" id="payment3Date" name="payment3Date" required>
+            </div>
+            <div class="form-group">
+                <label for="payment3Amount">3rd Payment Amount (R)</label>
+                <input type="number" id="payment3Amount" name="payment3Amount" required placeholder="Your answer">
+            </div>
+            <div class="form-group">
+                <label for="payment4Date">4th Payment Date</label>
+                <input type="date" id="payment4Date" name="payment4Date" required>
+            </div>
+            <div class="form-group">
+                <label for="payment4Amount">4th Payment Amount (R)</label>
+                <input type="number" id="payment4Amount" name="payment4Amount" required placeholder="Your answer">
+            </div>
+
+            <div class="form-group">
+                <label for="videoConfirmation">Video Confirmation *</label>
+                <input type="file" id="videoConfirmation" name="videoConfirmation" accept="video/*" required>
+                <p class="note">Upload 1 supported file: video; Max: 10 GB</p>
+            </div>
+
+            <div class="form-group">
+                <label>3 Months bank statements and Payslips: *</label>
+                <input type="file" id="bankStatements" name="bankStatements" accept=".pdf" multiple required>
+                <p class="note">Upload up to 10 supported files: PDF; Max: 100 MB per file</p>
+            </div>
+
+            <div class="form-group">
+                <label>Agreement Terms *</label>
+                <p>I acknowledge that any overdue payments will be subject to a 10% interest per week, and failure to comply with the payment schedule could result in legal action</p>
+                <input type="checkbox" id="agreement" name="agreement" required>
+                <label for="agreement">I agree</label>
+            </div>
+
+            <div class="form-group">
+                <label for="signature">Signature *</label>
+                <input type="text" id="signature" name="signature" required placeholder="Your answer">
+            </div>
+
+            <div class="form-group">
+                <label for="date">Date *</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="sendCopy" name="sendCopy">
+                <label for="sendCopy">Send me a copy of my responses</label>
+            </div>
+
+            <button type="submit">Submit</button>
+            <button type="reset" class="clear">Clear</button>
+
+            <p class="disclaimer">Never submit passwords through Google Forms. This content is neither created nor endorsed by Google. — <a href="#">Terms of Service</a> — <a href="#">Privacy Policy</a></p>
+            <p>Does this form look suspicious? <a href="#">Report</a></p>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
